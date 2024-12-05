@@ -41,7 +41,7 @@ def getDifficulty(prepTime: str, cookTime: str) -> str:
     sum = prepTime + cookTime
     if sum < 30:
         return 'Easy'
-    elif sum < 60:
+    elif sum <= 60:
         return 'Medium'
     else:
         return 'Hard'
