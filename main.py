@@ -1,6 +1,7 @@
 import json
 import sqlite3
 import re
+import os
 import pandas as pd
 from fuzzywuzzy import fuzz
 
@@ -48,7 +49,7 @@ def setupRecipes(connection: sqlite3.Connection):
         )
     ''')
 
-def addRecipe(cursor, name, ingredients, url, image, cookTime, recipeYield, datePublished, prepTime, description):
+def addRecipe(cursor: sqlite3.Cursor, name: str, ingredients: str, url: str, image: str, cookTime: str, recipeYield: str, datePublished: str, prepTime: str, description: str):
     cursor.execute('''
         INSERT INTO recipes (name , ingredients, url, image, cookTime, recipeYield, datePublished, prepTime, description)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -97,8 +98,11 @@ def main():
 
     updateDifficulty(connection, chiliRecipes)
     write_to_csv(chiliRecipes)
-    
+
     connection.close()
+    dbPath = 'recipes.db'
+    if os.path.exists(dbPath):
+        os.remove(dbPath)
 
 if __name__ == '__main__':
     main()
