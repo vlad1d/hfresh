@@ -179,7 +179,7 @@ def main():
         raise RuntimeError(f"Failed to connect to database: {e}")
 
     setupRecipes(connection)
-    recipes = readJson('./recipes.json')
+    recipes = readJson('../recipes.json')
     loadRecipes(connection, recipes)
 
     chiliRecipes = []
