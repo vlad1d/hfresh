@@ -1,0 +1,4 @@
+venv
+recipes.db
+recipes.csv
+.DS_Store
