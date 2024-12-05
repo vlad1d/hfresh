@@ -1,4 +1,5 @@
 venv
+recipes.json
 recipes.db
 recipes.csv
 .DS_Store
